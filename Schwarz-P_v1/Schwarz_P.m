@@ -2,24 +2,24 @@ clc;
 clear;
 close all;
 
-to_mat = false; %Option to save mesh data or not
+to_mat = true; %Option to save mesh data or not
 draw_graph = true; %Option to display the mesh in MATLAB
 
 Size  = 2e-3; %TPMS cell edge dimensions, initially generates unit cell then scale
 ds = 0.001; %Smallest step size, relative to the unit cell
 
 %Fraction of nodes to be used, control over resolution
-frac = 30;
+frac = 25;
 Ds = frac*ds;
 
 %Expansion layer sizing controls
 lvl_init = 0; %Surface isofunction value
 mesh_dir = 0; %Direction in which the mesh is built: inside (0) or outside (1) the first isolayer
-l1_ht = Size*Ds/4; %First layer height
+l1_ht = Size*Ds/10; %First layer height
 exp_ratio = 1.05; %Ratio of subsequent layer heights
 n_layers = 0;
 %Set n_Layers = 0 to control the total inflation region thickness instead
-BL_ht = 2*l1_ht; %Ignored if n_layers is non-zero
+BL_ht = 25*l1_ht; %Ignored if n_layers is non-zero
 
 %Control for mesh sizing along the unit cell edge parallel to the flow
 %direction (assumed to be y)

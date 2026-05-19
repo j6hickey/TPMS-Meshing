@@ -57,7 +57,7 @@ lvl_int = n_lvl*I+np.arange(I)
 for axis in range(0,3):
     for sign in range(0,2):
         face_pts = p[lvl_int,:][np.pow(p[lvl_int,axis+1]-((-1)**sign)*Size/2,2) <= (Size*Ds/10)**2,:]
-        face_pts = face_pts[np.argsort(np.atan2(face_pts[:,(axis+1)%3+1],face_pts[:,(axis+2)%3+1])),:]
+        face_pts = face_pts[np.argsort(np.arctan2(face_pts[:,(axis+1)%3+1],face_pts[:,(axis+2)%3+1])),:]
         face_pts = np.vstack((face_pts,face_pts[0,:]))
         outer_lines = []
         for i in range(face_pts.shape[0]-1):
@@ -152,7 +152,7 @@ for axis in range(0,3):
     for sign in range(0,2):
         face_pts = np.hstack((p[:I,:],np.arange(I).reshape((-1,1)),))
         face_pts = face_pts[np.pow(p[:I,axis+1]-((-1)**sign)*Size/2,2) <= (Size*Ds/10)**2,:]
-        face_pts = face_pts[np.argsort(np.atan2(face_pts[:,(axis+1)%3+1],face_pts[:,(axis+2)%3+1])),-1]
+        face_pts = face_pts[np.argsort(np.arctan2(face_pts[:,(axis+1)%3+1],face_pts[:,(axis+2)%3+1])),-1]
         face_pts = np.append(face_pts,face_pts[0])
         nodes = np.zeros(4*n_lvl*(face_pts.shape[0]-1))
         for i in range(n_lvl):
